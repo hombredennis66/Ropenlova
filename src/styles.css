@@ -4,6 +4,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-schibsted: "Schibsted Grotesk", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-noto: "Noto Sans", sans-serif;
+  --font-fustat: "Fustat", sans-serif;
+
+  --color-ink: #000000;
+  --color-grayink: #505050;
+  --color-lightgray: #f8f8f8;
+  --color-upgrade: rgba(90, 225, 76, 0.89);
+  --color-darkbadge: #0e1311;
+  --color-overlay: rgba(0, 0, 0, 0.24);
+}
+
 /*
  * Design system definition.
  *
