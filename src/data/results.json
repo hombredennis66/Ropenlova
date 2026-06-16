@@ -1,0 +1,42 @@
+{
+  "dataset": { "records": 250, "features": 23, "target": "Total Semester Spending" },
+  "models": [
+    { "name": "Linear Regression", "r2": 0.842, "rmse": 184.6, "mae": 142.3 },
+    { "name": "Ridge (L2)", "r2": 0.851, "rmse": 178.9, "mae": 138.1 },
+    { "name": "Lasso (L1)", "r2": 0.838, "rmse": 187.2, "mae": 144.9 },
+    { "name": "Random Forest", "r2": 0.907, "rmse": 141.5, "mae": 108.7 }
+  ],
+  "featureImportance": [
+    { "feature": "Monthly Allowance", "importance": 0.281 },
+    { "feature": "Accommodation Type", "importance": 0.154 },
+    { "feature": "Outings / Month", "importance": 0.121 },
+    { "feature": "Distance from Campus", "importance": 0.097 },
+    { "feature": "Meal Habits", "importance": 0.084 },
+    { "feature": "Transport Type", "importance": 0.071 },
+    { "feature": "Mobile Data Usage", "importance": 0.058 },
+    { "feature": "Gaming Hours", "importance": 0.049 },
+    { "feature": "Club Events", "importance": 0.041 },
+    { "feature": "Year of Study", "importance": 0.026 },
+    { "feature": "Printing Frequency", "importance": 0.018 }
+  ],
+  "predictedVsActual": [
+    { "actual": 420, "predicted": 438 },
+    { "actual": 560, "predicted": 541 },
+    { "actual": 610, "predicted": 632 },
+    { "actual": 720, "predicted": 698 },
+    { "actual": 805, "predicted": 829 },
+    { "actual": 880, "predicted": 861 },
+    { "actual": 940, "predicted": 972 },
+    { "actual": 1020, "predicted": 995 },
+    { "actual": 1130, "predicted": 1158 },
+    { "actual": 1250, "predicted": 1221 },
+    { "actual": 1340, "predicted": 1375 },
+    { "actual": 1480, "predicted": 1452 }
+  ],
+  "categories": [
+    { "category": "Financial", "share": 34 },
+    { "category": "Lifestyle", "share": 28 },
+    { "category": "Behavioral", "share": 24 },
+    { "category": "Academic", "share": 14 }
+  ]
+}
