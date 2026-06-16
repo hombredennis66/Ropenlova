@@ -115,7 +115,7 @@ export default function Dashboard() {
                 innerRadius={60}
                 outerRadius={100}
                 paddingAngle={3}
-                label={(e: { category?: string; share?: number }) => `${e.category} ${e.share}%`}
+                label={(e: any) => `${e.category} ${e.share}%`}
               >
                 {results.categories.map((_, i) => (
                   <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
