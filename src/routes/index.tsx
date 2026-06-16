@@ -27,8 +27,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="relative">
-      <DepthScene />
-
       {/* Hero */}
       <section className="relative min-h-screen overflow-hidden">
         <VideoBackground />
@@ -44,15 +42,16 @@ function Index() {
       </section>
 
       {/* 3D depth intro */}
-      <section className="relative z-10 flex min-h-[80vh] items-center justify-center px-6 text-center">
-        <div className="max-w-2xl">
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 text-center">
+        <DepthScene />
+        <div className="relative z-10 max-w-2xl">
           <h2
-            className="font-fustat font-bold text-ink"
+            className="font-fustat font-bold text-white"
             style={{ fontSize: 56, letterSpacing: "-2.8px", lineHeight: 1.05 }}
           >
             Real depth. Real motion.
           </h2>
-          <p className="mx-auto mt-5 max-w-lg font-fustat font-medium text-grayink" style={{ fontSize: 20 }}>
+          <p className="mx-auto mt-5 max-w-lg font-fustat font-medium text-white/70" style={{ fontSize: 20 }}>
             Scroll to move through a living field of data — every shard and particle reacts to your
             journey in true 3D space.
           </p>
