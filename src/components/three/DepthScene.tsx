@@ -114,7 +114,7 @@ export default function DepthScene() {
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
   return (
-    <div className="fixed inset-0 -z-10 bg-lightgray">
+    <div className="absolute inset-0" style={{ background: "#0e1311" }}>
       <Scene />
     </div>
   );
