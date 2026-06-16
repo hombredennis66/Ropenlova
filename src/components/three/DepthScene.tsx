@@ -91,6 +91,84 @@ function Shards({ scroll }: { scroll: React.MutableRefObject<number> }) {
   );
 }
 
+function ParallaxLayer({
+  scroll,
+  depth,
+  count,
+  size,
+  color,
+  speed,
+  spread,
+}: {
+  scroll: React.MutableRefObject<number>;
+  depth: number;
+  count: number;
+  size: number;
+  color: string;
+  speed: number;
+  spread: number;
+}) {
+  const ref = useRef<THREE.Points>(null);
+
+  const positions = useMemo(() => {
+    const arr = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      arr[i * 3] = (Math.random() - 0.5) * spread;
+      arr[i * 3 + 1] = (Math.random() - 0.5) * spread;
+      arr[i * 3 + 2] = (Math.random() - 0.5) * 4 + depth;
+    }
+    return arr;
+  }, [count, spread, depth]);
+
+  useFrame((state, delta) => {
+    if (!ref.current) return;
+    ref.current.rotation.y += delta * 0.02 * speed;
+    // Closer layers (less negative depth) react more strongly to scroll → parallax.
+    ref.current.position.y = scroll.current * speed * 6;
+    ref.current.position.x = Math.sin(scroll.current * Math.PI) * speed;
+  });
+
+  return (
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <pointsMaterial size={size} color={color} transparent opacity={0.55} sizeAttenuation />
+    </points>
+  );
+}
+
+function Rings({ scroll }: { scroll: React.MutableRefObject<number> }) {
+  const group = useRef<THREE.Group>(null);
+  const rings = useMemo(
+    () => [
+      { z: -10, scale: 6, speed: 0.3 },
+      { z: -6, scale: 4, speed: 0.6 },
+      { z: -2, scale: 2.6, speed: 1 },
+    ],
+    [],
+  );
+
+  useFrame(() => {
+    if (!group.current) return;
+    group.current.children.forEach((c, i) => {
+      c.rotation.z = scroll.current * rings[i].speed * 2;
+      c.position.y = scroll.current * rings[i].speed * 3;
+    });
+  });
+
+  return (
+    <group ref={group}>
+      {rings.map((r, i) => (
+        <mesh key={i} position={[0, 0, r.z]} scale={r.scale} rotation={[Math.PI / 2.4, 0, 0]}>
+          <torusGeometry args={[1, 0.012, 8, 80]} />
+          <meshBasicMaterial color="#5ae14c" transparent opacity={0.18 + i * 0.06} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
 function Scene() {
   const progress = useScrollProgress();
   const scroll = useRef(0);
@@ -102,6 +180,13 @@ function Scene() {
       <directionalLight position={[5, 5, 5]} intensity={1.1} />
       <pointLight position={[-5, -3, 4]} intensity={0.6} color="#5ae14c" />
       <Suspense fallback={null}>
+        {/* Far parallax layer — slow, small, dim */}
+        <ParallaxLayer scroll={scroll} depth={-9} count={500} size={0.03} color="#3a6b33" speed={0.25} spread={26} />
+        {/* Mid parallax layer */}
+        <ParallaxLayer scroll={scroll} depth={-4} count={400} size={0.05} color="#5ae14c" speed={0.55} spread={20} />
+        {/* Near parallax layer — fast, large */}
+        <ParallaxLayer scroll={scroll} depth={1} count={220} size={0.08} color="#ffffff" speed={1.1} spread={16} />
+        <Rings scroll={scroll} />
         <Particles scroll={scroll} />
         <Shards scroll={scroll} />
       </Suspense>
