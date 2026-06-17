@@ -4,6 +4,12 @@ import Navigation from "../components/hero/Navigation";
 import HeroContent from "../components/hero/HeroContent";
 import DepthScene from "../components/three/DepthScene";
 import Dashboard from "../components/dashboard/Dashboard";
+import {
+  FeaturesSection,
+  ProjectsSection,
+  CommunitySection,
+  ContactSection,
+} from "../components/sections/ImmersiveSections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
