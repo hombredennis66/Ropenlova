@@ -82,8 +82,15 @@ function Index() {
         ))}
       </section>
 
+      {/* Immersive scroll-triggered sections */}
+      <FeaturesSection />
+
       {/* Dashboard */}
       <Dashboard />
+
+      <ProjectsSection />
+      <CommunitySection />
+      <ContactSection />
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-ink/10 bg-white/85 px-6 py-12 text-center backdrop-blur-sm">
