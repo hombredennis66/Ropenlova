@@ -34,7 +34,7 @@ function Index() {
   return (
     <main className="relative">
       {/* Hero */}
-      <section className="relative min-h-screen overflow-hidden">
+      <section id="top" className="relative min-h-screen overflow-hidden">
         <VideoBackground />
         <div className="relative z-10 flex min-h-screen flex-col" style={{ paddingTop: 0 }}>
           <Navigation />
