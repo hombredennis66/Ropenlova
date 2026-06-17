@@ -4,6 +4,12 @@ import Navigation from "../components/hero/Navigation";
 import HeroContent from "../components/hero/HeroContent";
 import DepthScene from "../components/three/DepthScene";
 import Dashboard from "../components/dashboard/Dashboard";
+import {
+  FeaturesSection,
+  ProjectsSection,
+  CommunitySection,
+  ContactSection,
+} from "../components/sections/ImmersiveSections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,7 +34,7 @@ function Index() {
   return (
     <main className="relative">
       {/* Hero */}
-      <section className="relative min-h-screen overflow-hidden">
+      <section id="top" className="relative min-h-screen overflow-hidden">
         <VideoBackground />
         <div className="relative z-10 flex min-h-screen flex-col" style={{ paddingTop: 0 }}>
           <Navigation />
@@ -76,8 +82,15 @@ function Index() {
         ))}
       </section>
 
+      {/* Immersive scroll-triggered sections */}
+      <FeaturesSection />
+
       {/* Dashboard */}
       <Dashboard />
+
+      <ProjectsSection />
+      <CommunitySection />
+      <ContactSection />
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-ink/10 bg-white/85 px-6 py-12 text-center backdrop-blur-sm">
