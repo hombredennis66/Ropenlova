@@ -1,0 +1,168 @@
+{
+  "project": {
+    "name": "Student Spending Prediction Platform",
+    "version": "2.0",
+    "status": "In Development",
+    "objective": "Build a production-ready machine learning platform that collects real student survey data, stores it in PostgreSQL, predicts spending behavior using machine learning models, and visualizes insights through an interactive dashboard."
+  },
+  "architecture": {
+    "frontend": {
+      "framework": "TanStack Start",
+      "language": "TypeScript",
+      "ui": [
+        "React 19",
+        "Tailwind CSS v4",
+        "Radix UI",
+        "Motion",
+        "React Three Fiber"
+      ]
+    },
+    "backend": {
+      "framework": "FastAPI",
+      "language": "Python",
+      "responsibilities": [
+        "Model inference",
+        "Prediction API",
+        "Model version management",
+        "Training endpoints",
+        "Analytics aggregation"
+      ]
+    },
+    "database": {
+      "provider": "Supabase PostgreSQL",
+      "features": [
+        "Authentication",
+        "Row Level Security",
+        "Data Storage",
+        "Analytics"
+      ]
+    },
+    "machine_learning": {
+      "models": [
+        "Linear Regression",
+        "Ridge Regression",
+        "Lasso Regression",
+        "Random Forest Regressor"
+      ],
+      "future_models": [
+        "XGBoost",
+        "LightGBM",
+        "CatBoost"
+      ]
+    }
+  },
+  "database_schema": {
+    "users": {
+      "id": "uuid",
+      "email": "string",
+      "created_at": "timestamp"
+    },
+    "survey_responses": {
+      "id": "uuid",
+      "user_id": "uuid",
+      "monthly_allowance": "float",
+      "distance_from_campus": "float",
+      "accommodation_type": "string",
+      "transport_type": "string",
+      "meal_habits": "string",
+      "outings_per_month": "integer",
+      "gaming_hours": "float",
+      "club_events": "integer",
+      "mobile_data_usage": "float",
+      "year_of_study": "integer",
+      "printing_frequency": "integer",
+      "created_at": "timestamp"
+    },
+    "predictions": {
+      "id": "uuid",
+      "user_id": "uuid",
+      "survey_response_id": "uuid",
+      "predicted_spending": "float",
+      "model_version": "string",
+      "created_at": "timestamp"
+    },
+    "model_versions": {
+      "id": "uuid",
+      "version": "string",
+      "model_type": "string",
+      "r2_score": "float",
+      "rmse": "float",
+      "created_at": "timestamp"
+    }
+  },
+  "api_endpoints": [
+    {
+      "method": "POST",
+      "endpoint": "/predict",
+      "description": "Generate spending prediction"
+    },
+    {
+      "method": "POST",
+      "endpoint": "/survey",
+      "description": "Store survey response"
+    },
+    {
+      "method": "GET",
+      "endpoint": "/analytics",
+      "description": "Dashboard analytics"
+    },
+    {
+      "method": "GET",
+      "endpoint": "/models",
+      "description": "Available model versions"
+    },
+    {
+      "method": "POST",
+      "endpoint": "/train",
+      "description": "Retrain models"
+    }
+  ],
+  "dashboard_features": [
+    "Prediction form",
+    "Personal prediction history",
+    "Feature importance charts",
+    "Spending trend analysis",
+    "Model comparison charts",
+    "Dataset statistics",
+    "User analytics"
+  ],
+  "authentication": {
+    "provider": "Supabase Auth",
+    "methods": [
+      "Email Password",
+      "Google OAuth"
+    ],
+    "requirements": [
+      "Verified Email",
+      "Protected Dashboard Routes"
+    ]
+  },
+  "deployment": {
+    "frontend": "Vercel or Render",
+    "backend": "Render Web Service",
+    "database": "Supabase PostgreSQL",
+    "retraining": "Render Cron Job"
+  },
+  "ml_pipeline": {
+    "steps": [
+      "Collect Survey Data",
+      "Validate Input",
+      "Store in PostgreSQL",
+      "Feature Engineering",
+      "Train Models",
+      "Evaluate Metrics",
+      "Save Model",
+      "Serve Predictions",
+      "Monitor Performance"
+    ]
+  },
+  "future_enhancements": [
+    "SHAP Explainability",
+    "Automated Retraining",
+    "A/B Testing Models",
+    "Recommendation System",
+    "Multi-University Dataset",
+    "Export Reports",
+    "Admin Dashboard"
+  ]
+}
